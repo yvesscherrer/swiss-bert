@@ -5,7 +5,7 @@ Code for training Swiss German BERT models using the SwissCrawl corpus.
 ## Requirements
 
 - The [simpletransformers](https://simpletransformers.ai/) library
-- The [SwissCrawl](https://icosys.ch/swisscrawl) corpus
+- The [SwissCrawl](https://icosys.ch/swisscrawl) corpus (Note: SwissCrawl is released under a Creative Commons 4.0 NC license. Written consent from Swisscom/Icosys is required for commercial use.)
 - The [bert-base-german-cased](https://huggingface.co/dbmdz/bert-base-german-cased) and/or [bert-base-german-uncased](https://huggingface.co/dbmdz/bert-base-german-uncased) models provided by DBMDZ
 - We used the VarDial 2020 SMG training data (without dialect labels) as a validation set, but any other validation data can be used instead.
 
