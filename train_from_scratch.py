@@ -4,13 +4,14 @@ import logging, sys
 from simpletransformers.language_modeling import LanguageModelingModel, LanguageModelingArgs
 
 if __name__ == "__main__":
-	task = sys.argv[1]
+	casing = sys.argv[1]    # "cased" or "uncased"
+	vocsize = int(sys.argv[2])
 
 	logging.basicConfig(level=logging.INFO)
 	transformers_logger = logging.getLogger("transformers")
 	transformers_logger.setLevel(logging.WARNING)
-	
-	outdir_name = task + "-vardial-uncased"
+
+	outdir_name = "ch-swisscrawl-{}-{:d}k".format(casing, vocsize/1000)
 	model_args = LanguageModelingArgs()
 	model_args.reprocess_input_data = True
 	model_args.output_dir = outdir_name
@@ -25,9 +26,11 @@ if __name__ == "__main__":
 	model_args.evaluate_during_training_verbose = True
 	model_args.evaluate_during_training_steps = 5000
 	model_args.silent = True
-	model_args.do_lower_case = True
+	model_args.do_lower_case = (casing == "uncased")
 	model_args.tokenizer_name = None
-	model_args.vocab_size = 30000
-	
-	model = LanguageModelingModel("bert", None, args=model_args, train_files=task+"-train.txt")
-	model.train_model(task+"-train.txt", eval_file=task+"-dev.txt")
+	model_args.vocab_size = vocsize
+
+	model = LanguageModelingModel("bert", None, args=model_args,
+		train_files="swisscrawl_reformatted.txt")
+	model.train_model("swisscrawl_reformatted.txt",
+		eval_file="vardial_train_reformatted.txt")
