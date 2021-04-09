@@ -12,9 +12,11 @@ Code for training Swiss German BERT models using the SwissCrawl corpus.
 ## Train BERT from scratch on SwissCrawl
 
 Extract the plain text from SwissCrawl:
+
 `tail -n+2 swisscrawl-2019-11-23.csv | cut -f 1 > swisscrawl_reformatted.txt`
 
 Specify whether to train a cased or uncased model, and specify the vocabulary size:
+
 `python3 train_from_scratch.py cased|uncased 30000`
 
 We tested uncased models with vocabulary sizes of 3000 and 30000. The latter yielded better results.
@@ -24,8 +26,10 @@ We tested uncased models with vocabulary sizes of 3000 and 30000. The latter yie
 This is the recommended setup and yields better results than training from scratch.
 
 Extract the plain text from SwissCrawl:
+
 `tail -n+2 swisscrawl-2019-11-23.csv | cut -f 1 > swisscrawl_reformatted.txt`
 
 Load existing model and continue training on SwissCrawl:
+
 `python3 train_from_existing.py cased|uncased`
 
