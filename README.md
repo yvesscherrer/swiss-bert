@@ -21,9 +21,9 @@ Specify whether to train a cased or uncased model, and specify the vocabulary si
 
 We tested uncased models with vocabulary sizes of 3000 and 30000. The latter yielded better results.
 
-# Continue pretraining a DBMDZ BERT with SwissCrawl
+## Continue pretraining a DBMDZ BERT with SwissCrawl
 
-This is the recommended setup and yields better results than training from scratch.
+*This is the recommended setup and yields better results than training from scratch.*
 
 Extract the plain text from SwissCrawl:
 
